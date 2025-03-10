@@ -16,3 +16,5 @@ for i in range(1000):
 pie=4*area1/(area1+area2)
 print(pie)
 
+
+
