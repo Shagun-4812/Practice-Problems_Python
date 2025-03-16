@@ -1,4 +1,7 @@
 def exchange(arr):
+    # Exchange Selection Sort
+    # Best Time Complexity: O(n^2) - Example: [1, 2, 3, 4, 5]
+    # Worst Time Complexity: O(n^2) - Example: [5, 4, 3, 2, 1]
     n = len(arr)
     for i in range(n-1):
         max_idx = i  # Reset max_idx to the current index i
