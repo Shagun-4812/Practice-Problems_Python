@@ -1,11 +1,11 @@
 def exchange(arr):
     n = len(arr)
     for i in range(n-1):
-        max = i  # Reset max to the current index i
+        max_idx = i  # Reset max_idx to the current index i
         for j in range(i+1, n):
-            if arr[i] < arr[j]:
-                max = j
-        arr[i], arr[max] = arr[max], arr[i]
+            if arr[j] > arr[max_idx]:
+                max_idx = j
+        arr[i], arr[max_idx] = arr[max_idx], arr[i]
     return arr
 
 def main():
