@@ -1,4 +1,7 @@
 def merge_sort(arr):
+    # Merge Sort
+    # Best Time Complexity: O(n log n) - Example: [1, 2, 3, 4, 5]
+    # Worst Time Complexity: O(n log n) - Example: [5, 4, 3, 2, 1]
     if len(arr) <= 1:
         return arr
 
