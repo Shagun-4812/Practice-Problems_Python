@@ -1,0 +1,39 @@
+# Python Problems Repository
+
+This repository contains a collection of Python problems and solutions aimed at helping learners practice and improve their Python programming skills. Each problem is designed to cover different aspects of Python, from basic syntax to advanced concepts.
+
+## Structure
+
+- **Problem Statements**: Find Python programming challenges in the `problems/` directory.
+- **Solutions**: Solutions to each problem can be found in the `solutions/` directory, categorized by problem number.
+- **Additional Resources**: Links to helpful resources for learning Python are provided in the `resources.md` file.
+
+## How to Use
+
+1. Clone this repository to your local machine:
+
+2. Navigate to the directory:
+
+3. Choose a problem from the `problems/` directory.
+
+4. Implement your solution in Python.
+
+5. Check the `solutions/` directory for reference solutions.
+
+6. Test and improve your code.
+
+7. Share your solutions or contribute to this repository.
+
+## Contributing
+
+Contributions to this repository are welcome! If you have a problem or solution to add, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/add-problem`).
+3. Commit your changes (`git commit -am 'Add new problem: <problem-name>'`).
+4. Push to the branch (`git push origin feature/add-problem`).
+5. Create a new Pull Request.
+
+## License
+
+This repository is licensed under the MIT License. See the `LICENSE` file for more information.
