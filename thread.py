@@ -11,5 +11,8 @@ def func2():
 t1= threading.Thread(target=func1, args=[])
 t2= threading.Thread(target=func2, args=[])       
         
-func1()
-func2()
+        
+t1.start()
+t2.start()
+#func1()
+#func2()
