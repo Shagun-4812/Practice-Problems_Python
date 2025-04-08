@@ -10,8 +10,8 @@ def counter():
         
     print(name," Finished counting.....")
     
-Dinesh=threading.Thread(target=counter, name=("Dinesh"),)
-Suresh=threading.Thread(target=counter, name=("Suresh"),)
+Dinesh=threading.Thread(target=counter, args=("Dinesh"),)
+Suresh=threading.Thread(target=counter, args=("Suresh"),)
 
 Dinesh.start()
 Suresh.start()
