@@ -1,11 +1,11 @@
 import threading
 import time 
 def func1():
-    for i in range(500):
+    for i in range(50):
         print("anything")
         
 def func2():
-    for i in range(500):
+    for i in range(50):
         print("something")
 
 t1= threading.Thread(target=func1, args=[])
