@@ -262,5 +262,50 @@ def classAverage(students, subject):
     return round(sum(subject_scores) / len(subject_scores), 2) if subject_scores else 0
 
 
+# 27.
 
+class InvalidVectorOperation(Exception):
+    pass
 
+class Vector:
+    def __init__(self, values):
+        if not isinstance(values, list) or not all(isinstance(v, (int, float)) for v in values):
+            raise InvalidVectorOperation("Vector must be a list of numbers.")
+        self.__values = values
+
+    def __str__(self):
+        return f"{len(self.__values)}-dimensional vector: {self.__values}"
+
+    def __mul__(self, scalar):
+        if isinstance(scalar, (int, float)):
+            return Vector([scalar * v for v in self.__values])
+        raise InvalidVectorOperation("Multiplication only allowed with a scalar.")
+
+    def __rmul__(self, scalar):
+        return self * scalar
+
+    def __add__(self, other):
+        if isinstance(other, Vector) and len(self.__values) == len(other.__values):
+            return Vector([self.__values[i] + other.__values[i] for i in range(len(self.__values))])
+        raise InvalidVectorOperation("Addition requires vectors of the same dimension.")
+
+    def __sub__(self, other):
+        if isinstance(other, Vector) and len(self.__values) == len(other.__values):
+            return Vector([self.__values[i] - other.__values[i] for i in range(len(self.__values))])
+        raise InvalidVectorOperation("Subtraction requires vectors of the same dimension.")
+
+    def __matmul__(self, other):
+        if isinstance(other, Vector) and len(self.__values) == len(other.__values):
+            return sum(self.__values[i] * other.__values[i] for i in range(len(self.__values)))
+        raise InvalidVectorOperation("Dot product requires vectors of the same dimension.")
+
+# Example usage
+v1 = Vector([1, 2, 3])
+v2 = Vector([4, 5, 6])
+
+print(v1)  # "3-dimensional vector: [1, 2, 3]"
+print(2 * v1)  # "3-dimensional vector: [2, 4, 6]"
+print(v1 * 3)  # "3-dimensional vector: [3, 6, 9]"
+print(v1 + v2)  # "3-dimensional vector: [5, 7, 9]"
+print(v1 - v2)  # "3-dimensional vector: [-3, -3, -3]"
+print(v1 @ v2)  # "32"
