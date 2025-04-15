@@ -14,5 +14,4 @@ for i in range(5):
     t = threading.Thread(target=worker, args=(f"Thread-{i}",))
     t.start()
     
-    
-    
+# in multiprcessing theadinf we exedcute simultanieor in threading smname memory space where as in mutlti differnt space so in input output case iuts fine but in case its cimputattional problems u r advised to use multiprocess
