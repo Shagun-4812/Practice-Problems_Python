@@ -37,3 +37,17 @@ def shift(s, ccount=0, acount=0):
 def distChar(s1, s2):
     return ''.join(sorted(set(s1) ^ set(s2)))
 
+# 7. Change characters to make the string uniform
+class InvalidInputException(Exception):
+    pass
+
+def change(s):
+    if not all(c in "RG" for c in s):
+        raise InvalidInputException("Input must contain only 'R' and 'G'.")
+    return min(s.count('R'), s.count('G'))
+
+# 8. Remove vowels from a string
+def delVowels(s):
+    vowels = "aeiouAEIOU"
+    return ''.join(c for c in s if c not in vowels)
+
