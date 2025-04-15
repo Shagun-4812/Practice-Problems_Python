@@ -11,3 +11,17 @@ def minIndexFirstString(str1, str2):
             max_index = i
     return max_index
 
+# 3. Extract the first letter of every word
+def firstLetters(s):
+    words = s.split()
+    return ''.join(word[0] for word in words)
+
+# 4. Capitalize letters at even indices and raise exception for uppercase letters
+class UpperCaseException(Exception):
+    pass
+
+def evenIndexCapital(s):
+    if any(c.isupper() for c in s):
+        raise UpperCaseException("Input contains uppercase letters.")
+    return ''.join(c.upper() if i % 2 == 0 else c for i, c in enumerate(s))
+
