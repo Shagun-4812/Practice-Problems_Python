@@ -3,3 +3,11 @@
 def checkPalindrome(s):
     return s == s[::-1]
 
+# 2. Find the largest index of a character in str1 also present in str2
+def minIndexFirstString(str1, str2):
+    max_index = -1
+    for i, char in enumerate(str1):
+        if char in str2:
+            max_index = i
+    return max_index
+
