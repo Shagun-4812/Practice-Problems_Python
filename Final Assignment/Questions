@@ -203,3 +203,64 @@ def oddCollatz(n):
     seq.append(1)
     return seq
 
+# 21. Move all zeros to the right using list comprehension
+def moveZeros(lst):
+    return [x for x in lst if x != 0] + [0] * lst.count(0)
+
+# 22. Print matrix from row-major order
+class DimensionMismatchException(Exception):
+    pass
+
+def printMat(lst, rows, cols):
+    if len(lst) != rows * cols:
+        raise DimensionMismatchException("Dimensions do not match matrix size.")
+    for i in range(rows):
+        print(" ".join(map(str, lst[i*cols:(i+1)*cols])))
+
+# 23. Matrix multiplication in row-major order
+def matMul(mat1, mat2, n):
+    if len(mat1) != len(mat2):
+        raise DimensionMismatchException("Matrices must be of compatible dimensions.")
+    result = [sum(mat1[i*n+j] * mat2[j*n+k] for j in range(n)) for i in range(n) for k in range(n)]
+    return result
+
+# 24. Compute sum of squares of positive numbers and sum of cubes of negatives
+def splitsum(lst):
+    return [sum(x**2 for x in lst if x > 0), sum(x**3 for x in lst if x < 0)]
+
+# 25. Find the k-th largest element
+class InvalidKException(Exception):
+    pass
+
+def kMax(lst, k):
+    if k < 1 or k > len(lst):
+        raise InvalidKException("Invalid value for k.")
+    return sorted(lst, reverse=True)[k-1]
+
+# 26. Student class implementation with score tracking
+class Score:
+    def __init__(self, subject, marks):
+        self.subject = subject
+        self.marks = marks
+
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.scores = []
+
+    def add_score(self, subject, marks):
+        self.scores.append(Score(subject, marks))
+
+    def average(self):
+        return round(sum(score.marks for score in self.scores) / len(self.scores), 2) if self.scores else 0
+
+    def __str__(self):
+        return f"{self.name}: {', '.join(f'{s.subject}-{s.marks}' for s in self.scores)}"
+
+def classAverage(students, subject):
+    subject_scores = [s.marks for student in students for s in student.scores if s.subject == subject]
+    return round(sum(subject_scores) / len(subject_scores), 2) if subject_scores else 0
+
+
+
+
