@@ -90,3 +90,53 @@ def minOp(str1, str2):
                 dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
     
     return dp[m][n]
+
+# 12. Calculate total fee paid based on roll number
+class InvalidRollException(Exception):
+    pass
+
+def fee(base_fee, roll_no):
+    if len(roll_no) != 7 or roll_no[:2] not in {'DS', 'CS', 'EE', 'ME'} or roll_no[4] not in {'1', '2'}:
+        raise InvalidRollException("Invalid roll number.")
+    
+    year = int(roll_no[2:4])
+    program = 4 if roll_no[4] == '1' else 2
+    total_fee = 0
+    
+    for i in range(program):
+        total_fee += base_fee * (1.1 ** i)
+    
+    return int(total_fee)
+
+# 13. Reduce characters to make occurrence uniform
+from collections import Counter
+
+def reduce(s, k):
+    freq = Counter(s)
+    values = sorted(freq.values(), reverse=True)
+    
+    for _ in range(k):
+        values[0] -= 1
+        values.sort(reverse=True)
+    
+    if len(set(values)) == 1:
+        reduced_chars = [char * freq[char] for char in sorted(freq.keys())]
+        return ''.join(reduced_chars)
+    
+    return ""
+
+# 14. Find longest rotationally equivalent substring
+def is_rotation(s1, s2):
+    return len(s1) == len(s2) and s1 in (s2 + s2)
+
+def equivalent(str1, str2):
+    longest = ""
+    for i in range(len(str1)):
+        for j in range(i + 1, len(str1) + 1):
+            sub = str1[i:j]
+            for k in range(len(str2)):
+                for l in range(k + 1, len(str2) + 1):
+                    if is_rotation(sub, str2[k:l]):
+                        if len(sub) > len(longest) or (len(sub) == len(longest) and sub < longest):
+                            longest = sub
+    return longest if longest else "a"
