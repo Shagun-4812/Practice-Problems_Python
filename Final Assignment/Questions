@@ -1,0 +1,5 @@
+
+# 1. Check if a string is a palindrome
+def checkPalindrome(s):
+    return s == s[::-1]
+
