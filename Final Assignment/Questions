@@ -140,3 +140,66 @@ def equivalent(str1, str2):
                         if len(sub) > len(longest) or (len(sub) == len(longest) and sub < longest):
                             longest = sub
     return longest if longest else "a"
+
+# 15. Longest palindromic substring length
+def subPali(s):
+    n = len(s)
+    longest = 1
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            sub = s[i:j]
+            if sub == sub[::-1]:
+                longest = max(longest, len(sub))
+    return longest
+
+# 16. Extract duplicates from a list
+def extractDup(lst):
+    seen, dups = set(), set()
+    for num in lst:
+        if num in seen:
+            dups.add(num)
+        else:
+            seen.add(num)
+    return sorted(dups)
+
+# 17. Perform various list operations
+def listOps(lst):
+    if len(lst) >= 4:
+        print("Fourth item:", lst[3])
+    else:
+        print("Fourth item: List too short")
+    
+    print("All items except first two:", lst[2:])
+    print("Reverse list:", lst[::-1])
+    print("Sum of elements:", sum(lst))
+    print(f"Max: {max(lst)}, Min: {min(lst)}")
+    
+    zero_index = lst.index(0) if 0 in lst else -1
+    print("First zero index:", zero_index)
+    
+    print("Ascending order:", sorted(lst))
+    print("Descending order:", sorted(lst, reverse=True))
+
+# 18. Remove duplicates from list
+def delDup(lst):
+    return sorted(set(lst), key=lst.index)
+
+# 19. Weave two lists together
+class LengthMismatchException(Exception):
+    pass
+
+def weave(lst1, lst2):
+    if len(lst1) != len(lst2):
+        raise LengthMismatchException("Lists must have equal length.")
+    return [lst1[i] for i in range(len(lst1))] + [lst2[i] for i in range(len(lst2))]
+
+# 20. Odd numbers in Collatz sequence
+def oddCollatz(n):
+    seq = []
+    while n != 1:
+        if n % 2 == 1:
+            seq.append(n)
+        n = 3 * n + 1 if n % 2 else n // 2
+    seq.append(1)
+    return seq
+
