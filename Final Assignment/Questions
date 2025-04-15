@@ -25,3 +25,15 @@ def evenIndexCapital(s):
         raise UpperCaseException("Input contains uppercase letters.")
     return ''.join(c.upper() if i % 2 == 0 else c for i, c in enumerate(s))
 
+# 5. Rotate string left and then right
+def shift(s, ccount=0, acount=0):
+    if not isinstance(ccount, int) or not isinstance(acount, int) or ccount < 0 or acount < 0:
+        raise ValueError("Rotation counts must be non-negative integers.")
+    acount %= len(s)
+    ccount %= len(s)
+    return s[acount:] + s[:acount] if ccount == 0 else (s[acount:] + s[:acount])[-ccount:] + (s[acount:] + s[:acount])[:-ccount]
+
+# 6. Find sorted unique characters in two strings
+def distChar(s1, s2):
+    return ''.join(sorted(set(s1) ^ set(s2)))
+
